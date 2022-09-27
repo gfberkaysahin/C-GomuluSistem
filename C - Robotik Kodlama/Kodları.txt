@@ -1,0 +1,238 @@
+#include <SoftwareSerial.h>
+#include <SimpleSDAudio.h>
+
+SoftwareSerial bt_iletisim(7, 6);
+
+
+void setup() {
+  SdPlay.setSDCSPin(4); // sd kart cs pini
+
+  Serial.begin(9600);
+  bt_iletisim.begin(9600);
+
+  if (!SdPlay.init(SSDA_MODE_FULLRATE | SSDA_MODE_MONO | SSDA_MODE_AUTOWORKER | SSDA_MODE_HALFRATE ))
+  {
+    while (1);
+  }
+
+}
+
+void loop() {
+  int rastgele;
+  int z;
+  if (bt_iletisim.available()) {
+    String data = bt_iletisim.readString();
+    
+  
+    Serial.println(data);
+    if (data == "Ağladı Yar çal") {
+      a:
+      if (!SdPlay.setFile("1.wav")) // müzik dosya adı
+      {
+        while (1); //dosya bulunamassa durdur
+      }
+      else{
+        SdPlay.play();
+        
+      }
+      
+   
+    }
+    else if (data == "Bir Oda Yaptırdım çal") {
+      b:
+      if (!SdPlay.setFile("2.wav")) // müzik dosya adı
+      {
+        while (1); //dosya bulunamassa durdur
+      }
+      else{
+        SdPlay.play();
+      }
+      
+   
+    }
+    else if (data == "Ezel çal") {
+      c:
+      if (!SdPlay.setFile("Ezel.wav")) // müzik dosya adı
+      {
+        while (1); //dosya bulunamassa durdur
+      }
+      else{
+        SdPlay.play();
+      }
+      
+   
+    }
+    else if (data == "dua lipa çal") {
+      d:
+      if (!SdPlay.setFile("deneme.wav")) // müzik dosya adı
+      {
+        while (1); //dosya bulunamassa durdur
+      }
+      else{
+        SdPlay.play();
+      }
+      
+   
+    }
+    else if (data == "Dostum Dostum çal") {
+      e:
+      if (!SdPlay.setFile("3.wav")) // müzik dosya adı
+      {
+        while (1); //dosya bulunamassa durdur
+      }
+      else{
+        SdPlay.play();
+      }
+      
+   
+    }
+    else if (data == "servi hıramanın çal") {
+      f:
+      if (!SdPlay.setFile("5.wav")) // müzik dosya adı
+      {
+        while (1); //dosya bulunamassa durdur
+      }
+      else{
+        SdPlay.play();
+      }
+      
+   
+    }
+    else if (data == "gakkoş") {
+      
+      if (!SdPlay.setFile("siri.wav")) // müzik dosya adı
+      {
+        while (1); //dosya bulunamassa durdur
+      }
+      else{
+        SdPlay.play();
+      }
+      
+   
+    }
+     else if (data == "Oy Akşamlar çal") {
+      h:
+      if (!SdPlay.setFile("4.wav")) // müzik dosya adı
+      {
+        while (1); //dosya bulunamassa durdur
+      }
+      else{
+        SdPlay.play();
+      }
+
+      
+    }
+     else if (data == "paranoya çal") {
+      t:
+      if (!SdPlay.setFile("Paranoya.wav")) // müzik dosya adı
+      {
+        while (1); //dosya bulunamassa durdur
+      }
+      else{
+        SdPlay.play();
+      }
+
+      
+    }
+    else if (data == "Beni yak çal") {
+      j:
+      if (!SdPlay.setFile("Beni.wav")) // müzik dosya adı
+      {
+        while (1); //dosya bulunamassa durdur
+      }
+      else{
+        SdPlay.play();
+      }
+
+      
+    }
+     else if (data == "Bir Derdim Var çal") {
+      k:
+      if (!SdPlay.setFile("Bir.wav")) // müzik dosya adı
+      {
+        while (1); //dosya bulunamassa durdur
+      }
+      else{
+        SdPlay.play();
+      }
+
+      
+    }
+    else if (data == "Dilek Taşı çal") {
+      l:
+      if (!SdPlay.setFile("Dilek.wav")) // müzik dosya adı
+      {
+        while (1); //dosya bulunamassa durdur
+      }
+      else{
+        SdPlay.play();
+      }
+
+      
+    }
+    
+    else if (data == "Elleri Ellerime çal") {
+      n:
+      if (!SdPlay.setFile("Elleri.wav")) // müzik dosya adı
+      {
+        while (1); //dosya bulunamassa durdur
+      }
+      else{
+        SdPlay.play();
+      }
+
+      
+    }
+     else if (data == "Haydar Haydar çal") {
+      s:
+      if (!SdPlay.setFile("Haydar.wav")) // müzik dosya adı
+      {
+        while (1); //dosya bulunamassa durdur
+      }
+      else{
+        SdPlay.play();
+      }
+
+      
+    }
+    else if(data == "geç")
+      {
+        
+        
+        
+        rastgele=rand()%12;
+        if(rastgele==z){rastgele=rastgele+1;}
+        z=rastgele;
+        
+        if(rastgele==0){goto a;}
+        else if(rastgele==1){goto b;}
+        else if(rastgele==2){goto c;}
+        else if(rastgele==3){goto d;}
+        else if(rastgele==4){goto e;}
+        else if(rastgele==5){goto f;}
+        
+        else if(rastgele==6){goto h;}
+        else if(rastgele==7){goto t;}
+        else if(rastgele==8){goto j;}
+        else if(rastgele==9){goto k;}
+        else if(rastgele==10){goto l;}
+        
+        else if(rastgele==12){goto n;}
+        else if(rastgele==13){goto s;}
+        
+       
+        
+
+        
+       }
+    
+      else if (data == "dur") {SdPlay.pause();}
+      else if (data == "devam") {SdPlay.play();}
+      else if (data == "kapat") { SdPlay.stop();}
+    
+      
+   
+    
+  
+  }
+}

@@ -1,0 +1,124 @@
+#include <SoftwareSerial.h>
+#include <SimpleSDAudio.h>
+
+SoftwareSerial bt_iletisim(7, 6);
+
+String a;
+void setup() {
+  SdPlay.setSDCSPin(4); // sd kart cs pini
+
+  Serial.begin(9600);
+  bt_iletisim.begin(9600);
+
+  if (!SdPlay.init(SSDA_MODE_FULLRATE | SSDA_MODE_MONO | SSDA_MODE_AUTOWORKER | SSDA_MODE_HALFRATE ))
+  {
+    while (1);
+  }
+
+}
+
+void loop() {
+  if (bt_iletisim.available()) {
+    String data = bt_iletisim.readString();
+    
+  
+    Serial.println(data);
+    if (data == "Ağladı Yar çal") {
+      if (!SdPlay.setFile("1.wav")) // müzik dosya adı
+      {
+        while (1); //dosya bulunamassa durdur
+      }
+      else{
+        SdPlay.play();
+        a="1.wav";
+      }
+      
+   
+    }
+    else if (data == "Bir Oda Yaptırdım çal") {
+      if (!SdPlay.setFile("2.wav")) // müzik dosya adı
+      {
+        while (1); //dosya bulunamassa durdur
+      }
+      else{
+        SdPlay.play();
+      }
+      
+   
+    }
+    else if (data == "Ezel çal") {
+      if (!SdPlay.setFile("Ezel.wav")) // müzik dosya adı
+      {
+        while (1); //dosya bulunamassa durdur
+      }
+      else{
+        SdPlay.play();
+      }
+      
+   
+    }
+    else if (data == "dua lipa mı çal") {
+      if (!SdPlay.setFile("deneme.wav")) // müzik dosya adı
+      {
+        while (1); //dosya bulunamassa durdur
+      }
+      else{
+        SdPlay.play();
+      }
+      
+   
+    }
+    else if (data == "Dostum Dostum çal") {
+      if (!SdPlay.setFile("3.wav")) // müzik dosya adı
+      {
+        while (1); //dosya bulunamassa durdur
+      }
+      else{
+        SdPlay.play();
+      }
+      
+   
+    }
+    else if (data == "servi hıramanın çal") {
+      if (!SdPlay.setFile("5.wav")) // müzik dosya adı
+      {
+        while (1); //dosya bulunamassa durdur
+      }
+      else{
+        SdPlay.play();
+      }
+      
+   
+    }
+    else if (data == "gakkoş") {
+      if (!SdPlay.setFile("siri.wav")) // müzik dosya adı
+      {
+        while (1); //dosya bulunamassa durdur
+      }
+      else{
+        SdPlay.play();
+      }
+      
+   
+    }
+     else if (data == "Oy Akşamlar çal") {
+      if (!SdPlay.setFile("4.wav")) // müzik dosya adı
+      {
+        while (1); //dosya bulunamassa durdur
+      }
+      else{
+        SdPlay.play();
+      }
+
+      
+    }
+      else if (data == "dur") {SdPlay.pause();}
+      else if (data == "devam") {SdPlay.play();}
+      else if (data == "kapat") { SdPlay.stop();}
+      
+      
+   
+    
+  
+  }
+}
